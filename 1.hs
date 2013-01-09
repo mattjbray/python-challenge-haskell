@@ -1,10 +1,17 @@
 import Data.Char
+import System.IO
 
 main = do 
+  handle <- openFile "1.data" ReadMode
+  contents <- hGetContents handle
+
   -- Translate the clue
-  putStrLn $ translate 2 "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
+  putStrLn $ translate 2 contents
+
   -- Translate the URL
   putStrLn $ translate 2 "map"
+
+  hClose handle
 
 translate :: Int -> [Char] -> [Char]
 translate n phrase = map (translateChar n) phrase
