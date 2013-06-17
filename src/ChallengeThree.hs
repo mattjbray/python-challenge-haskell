@@ -1,11 +1,9 @@
-import Text.Regex.Posix
-import System.IO
+module ChallengeThree (solve) where
 
-main = do
-  handle <- openFile "3.data" ReadMode
-  contents <- hGetContents handle
-  putStrLn $ (concatSubMatches . getMatches) contents
-  hClose handle
+import Text.Regex.Posix
+
+solve data_contents =
+  (concatSubMatches . getMatches) data_contents
 
 -- extracts submatches from a list of [match, submatch] and concatenates them
 concatSubMatches :: [[String]] -> String
