@@ -1,3 +1,4 @@
 module ChallengeZero (solve) where
 
-solve _ = show (2^38)
+solve :: IO String
+solve = return $ show (2^38)

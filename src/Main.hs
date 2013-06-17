@@ -33,20 +33,4 @@ parseArgs challenges = sequence $ map runChallenge challenges
 runChallenge :: String -> IO ()
 runChallenge challenge = do
   putStrLn $ "Running challenge " ++ challenge ++ "..."
-  data_contents <- getData challenge
-  putStrLn $ solvers !! read(challenge) $ data_contents
-
-
-getData :: String -> IO String
-getData challenge = do
-  result <- try $ readFile fileName :: IO (Either SomeException String)
-  return $ extractData result
-  where
-    fileName = "data/" ++ challenge ++ ".data"
-
-
--- Extract the data from the try expression in getData
--- Return the contents of the file, or "" if the file doesn't exist
-extractData :: Either SomeException String -> String
-extractData (Left _) = ""
-extractData (Right x) = x
+  solvers !! read(challenge) >>= putStrLn.("Answer: " ++)

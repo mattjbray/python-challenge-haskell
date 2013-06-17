@@ -2,8 +2,10 @@ module ChallengeThree (solve) where
 
 import Text.Regex.Posix
 
-solve data_contents =
-  (concatSubMatches . getMatches) data_contents
+solve :: IO String
+solve = do
+  dataContents <- readFile "data/3.data"
+  return $ (concatSubMatches . getMatches) dataContents
 
 -- extracts submatches from a list of [match, submatch] and concatenates them
 concatSubMatches :: [[String]] -> String

@@ -2,12 +2,11 @@ module ChallengeOne (solve) where
 
 import Data.Char
 
-solve :: String -> String
-solve data_contents =
-  clue ++ url
+solve :: IO String
+solve = do
+  dataContents <- readFile "data/1.data"
+  return $ (translate 2 dataContents) ++ url
   where
-    -- Translate the clue
-    clue = translate 2 data_contents
     -- Translate the URL
     url  = translate 2 "map"
 

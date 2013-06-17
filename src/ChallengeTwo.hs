@@ -2,5 +2,7 @@ module ChallengeTwo (solve) where
 
 import Data.Char
 
-solve data_contents =
-  filter isLetter data_contents
+solve :: IO String
+solve = do
+  dataContents <- readFile "data/2.data"
+  return $ filter isLetter dataContents
