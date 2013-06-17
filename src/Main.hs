@@ -10,11 +10,13 @@ import qualified ChallengeZero
 import qualified ChallengeOne
 import qualified ChallengeTwo
 import qualified ChallengeThree
+import qualified ChallengeFour
 
 solvers = [ ChallengeZero.solve
           , ChallengeOne.solve
           , ChallengeTwo.solve
           , ChallengeThree.solve
+          , ChallengeFour.solve
           ]
 
 
